@@ -1,4 +1,5 @@
 import React from 'react';
+import Avatar from './Avatar';
 
 function SearchResults({ searchData }) {
   const creation = `Created: ${searchData.created_at}`;
@@ -19,7 +20,12 @@ function SearchResults({ searchData }) {
 
   const list = infoArray.map((element) => <li>{element}</li>);
 
-  return <div>{list}</div>;
+  return (
+    <div>
+      <Avatar searchData={searchData} />
+      <span>{list}</span>
+    </div>
+  );
 }
 
 export default SearchResults;
