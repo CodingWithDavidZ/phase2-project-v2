@@ -16,15 +16,10 @@ function SearchResults({ searchData }) {
     `Public Repos: ${searchData.public_repos}`,
     `Seeking Employment: ${searchData.hireable}`,
   ];
-  infoArray.forEach(function (element) {
-    listElement += '<li>' + element + '</li>';
-  });
-  let listElement = '';
 
-  return;
-  <div>
-    <div id='info'>{listElement}</div>
-  </div>;
+  const list = infoArray.map((element) => <li>{element}</li>);
+
+  return <div>{list}</div>;
 }
 
 export default SearchResults;

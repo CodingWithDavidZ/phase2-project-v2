@@ -1,26 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 
 function Search({ setSearchData }) {
   //   this should work but doesn't
   //   const originalName = searchUser.split(' ').join('');
-
+  const [user, setUser] = useState('');
   const handleChange = (e) => {
-    setSearchData(e.target.value);
+    setUser(e.target.value);
   };
 
   function handleSubmit(e) {
     e.preventDefault();
-  }
-
-  useEffect(() => {
-    const originalName = document
-      .getElementById('search')
-      .value.split(' ')
-      .join('');
+    const originalName = user.split(' ').join('');
     fetch('https://api.github.com/users/' + originalName)
       .then((response) => response.json())
-      .then((data) => setSearchData(data));
-  }, []);
+      .then((data) => setSearchData(data))
+      .then(() => setUser(''));
+  }
 
   return (
     <form id='searchForm' autoComplete='off' onSubmit={handleSubmit}>
@@ -32,6 +27,7 @@ function Search({ setSearchData }) {
           placeholder='Search Username'
           required
           onChange={handleChange}
+          value={user}
         />
         <br></br>
         <button id='searchButton'>Search User</button>
