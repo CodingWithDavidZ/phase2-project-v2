@@ -36,9 +36,13 @@ function SearchResults({ searchData }) {
 
   return (
     <div>
-      <Avatar searchData={searchData} />
-      <span key={searchData.id}>{list}</span>
-      <button onClick={handleClick}>Save</button>
+      <Avatar id='primaryAvatar' searchData={searchData} />
+      <span id='infoList' key={searchData.id}>
+        {list}
+      </span>
+      <button id='saveButton' onClick={handleClick}>
+        Save
+      </button>
     </div>
   );
 }
