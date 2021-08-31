@@ -37,7 +37,7 @@ function SearchResults({ searchData }) {
   return (
     <div>
       <Avatar searchData={searchData} />
-      <span>{list}</span>
+      <span key={searchData.id}>{list}</span>
       <button onClick={handleClick}>Save</button>
     </div>
   );

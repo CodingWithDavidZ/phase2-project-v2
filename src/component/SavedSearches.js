@@ -13,7 +13,7 @@ function SavedSearches() {
     return (
       <p id={data.id} key={data.id}>
         {' '}
-        <a target='_blank' rel='noreferrer' href={data.url}>
+        <a target='_blank' rel='noopener noreferrer' href={data.url}>
           <img src={data.picture} alt={data.id} width='100' height='100' />
         </a>
         <button className='btn btn-link' id={data.id} onClick={handleClick}>
@@ -24,13 +24,13 @@ function SavedSearches() {
   });
 
   function handleClick(e) {
-    fetch(`http://localhost:3000/saved/${saved.id}`, {
+    const buttonID = e.target.id;
+    fetch(`http://localhost:3000/saved/${buttonID}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    console.log(saved);
   }
 
   return <div>{existingSaved}</div>;

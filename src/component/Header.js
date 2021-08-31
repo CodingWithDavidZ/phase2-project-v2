@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <>
-      <title>GitRecruited</title>
-      <Link to='/about'>About</Link>
-      <br></br>
-      <Link to='/contact'>Contact</Link>
+      <Link id='homeLink' to='/home'>
+        Home
+      </Link>
+      <Link id='aboutLink' to='/about'>
+        About
+      </Link>
+
+      <Link id='contactLink' to='/contact'>
+        Contact
+      </Link>
+
       <h1 id='gitHired'>GitRecruited</h1>
     </>
   );
