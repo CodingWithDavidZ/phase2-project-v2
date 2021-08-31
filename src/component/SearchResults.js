@@ -20,10 +20,25 @@ function SearchResults({ searchData }) {
 
   const list = infoArray.map((element) => <li>{element}</li>);
 
+  function handleClick() {
+    fetch('http://localhost:3000/saved', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        url: searchData.html_url,
+        picture: searchData.avatar_url,
+      }),
+    });
+  }
+
   return (
     <div>
       <Avatar searchData={searchData} />
       <span>{list}</span>
+      <button onClick={handleClick}>Save</button>
     </div>
   );
 }
