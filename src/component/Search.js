@@ -9,6 +9,7 @@ function Search({
   //   this should work but doesn't
   //   const originalName = searchUser.split(' ').join('');
   const [user, setUser] = useState('');
+  const [text, setText] = useState(true);
   const handleChange = (e) => {
     setUser(e.target.value);
   };
@@ -28,6 +29,7 @@ function Search({
 
   function handleShowSaved(e) {
     setSavedVisibility(!savedVisibility);
+    setText(!text);
   }
 
   return (
@@ -47,11 +49,12 @@ function Search({
           <button id='searchButton' onClick={handleClick}>
             Search User
           </button>
+          &nbsp;&nbsp;
+          <button id='displaySaved' onClick={handleShowSaved}>
+            {text ? 'Show Saved' : 'Hide Saved'}
+          </button>
         </div>
       </form>
-      <button id='display saved' onClick={handleShowSaved}>
-        Toggle My Saved
-      </button>
     </>
   );
 }

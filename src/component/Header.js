@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <>
-      <Link id='homeLink' to='/home'>
+    <div className='navigation'>
+      <Link className='navLinks' id='homeLink' to='/home'>
         Home
       </Link>
-      <Link id='aboutLink' to='/about'>
+      <Link className='navLinks' id='aboutLink' to='/about'>
         About
       </Link>
 
-      <Link id='contactLink' to='/contact'>
+      <Link className='navLinks' id='contactLink' to='/contact'>
         Contact
       </Link>
 
       <h1 id='gitHired'>GitRecruited</h1>
-    </>
+    </div>
   );
 }
 

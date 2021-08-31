@@ -12,32 +12,43 @@ function App() {
   const [visibility, setVisibility] = useState(false);
   const [searchData, setSearchData] = useState([]);
   const [savedVisibility, setSavedVisibility] = useState(false);
+  const [saved, setSaved] = useState([]);
   console.log(searchData);
 
   return (
-    <Router>
-      <Route exact path='/'>
-        <Redirect to='/home' />
-      </Route>
-      <Header />
-      <Route exact path={'/contact'}>
-        <Contact />
-      </Route>
-      <Route exact path={'/about'}>
-        <About />
-      </Route>
+    <div className='main'>
+      <Router>
+        <Route exact path='/'>
+          <Redirect to='/home' />
+        </Route>
+        <Header />
+        <Route exact path={'/contact'}>
+          <Contact className='contact' />
+        </Route>
+        <Route exact path={'/about'}>
+          <About />
+        </Route>
 
-      <Route exact path={'/home'}>
-        <Search
-          setSearchData={setSearchData}
-          setVisibility={setVisibility}
-          setSavedVisibility={setSavedVisibility}
-          savedVisibility={savedVisibility}
-        />
-        {visibility ? <SearchResults searchData={searchData} /> : null}
-        {savedVisibility ? <SavedSearches /> : null}
-      </Route>
-    </Router>
+        <Route exact path={'/home'}>
+          <Search
+            setSearchData={setSearchData}
+            setVisibility={setVisibility}
+            setSavedVisibility={setSavedVisibility}
+            savedVisibility={savedVisibility}
+          />
+          {visibility ? (
+            <SearchResults
+              searchData={searchData}
+              saved={saved}
+              setSaved={setSaved}
+            />
+          ) : null}
+          {savedVisibility ? (
+            <SavedSearches saved={saved} setSaved={setSaved} />
+          ) : null}
+        </Route>
+      </Router>
+    </div>
   );
 }
 

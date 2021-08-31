@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar from './Avatar';
 
-function SearchResults({ searchData }) {
+function SearchResults({ searchData, setSaved, saved }) {
   const creation = `Created: ${searchData.created_at}`;
   const creationDateWithoutTime = creation.split('T')[0];
   const lastUpdate = `Last update: ${searchData.updated_at}`;
@@ -20,7 +20,7 @@ function SearchResults({ searchData }) {
 
   const list = infoArray.map((element) => <li>{element}</li>);
 
-  function handleClick() {
+  function handleSave() {
     fetch('http://localhost:3000/saved', {
       method: 'POST',
       headers: {
@@ -32,17 +32,24 @@ function SearchResults({ searchData }) {
         picture: searchData.avatar_url,
       }),
     });
+    fetch('http://localhost:3000/saved')
+      .then((response) => response.json())
+      .then((data) => setSaved(data));
   }
 
   return (
-    <div>
-      <Avatar id='primaryAvatar' searchData={searchData} />
-      <span id='infoList' key={searchData.id}>
+    <div className='grid-container'>
+      <Avatar
+        className='grid-item-1'
+        id='primaryAvatar'
+        searchData={searchData}
+      />
+      <ul className='grid-item-2' id='list'>
         {list}
-      </span>
-      <button id='saveButton' onClick={handleClick}>
-        Save
-      </button>
+        <button className='grid-item-3' id='saveButton' onClick={handleSave}>
+          Save
+        </button>
+      </ul>
     </div>
   );
 }

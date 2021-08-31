@@ -1,10 +1,20 @@
+@font-face {
+  font-family: gitHubFont;
+  src: url(./resources/font/collegiate/COLLEGIA.ttf);
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  margin-top: 3%;
+  margin-bottom: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./resources/background/BlackwWood.jpeg);
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  font-family: gitHubFont;
 }
 
 code {
