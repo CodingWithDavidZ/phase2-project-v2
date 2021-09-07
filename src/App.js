@@ -7,6 +7,7 @@ import SearchResults from './component/SearchResults';
 import SavedSearches from './component/SavedSearches';
 import About from './component/About';
 import Contact from './component/Contact';
+import ClickMe from './component/ClickMe';
 
 function App() {
   const [visibility, setVisibility] = useState(false);
@@ -24,6 +25,9 @@ function App() {
         <Header />
         <Route exact path={'/contact'}>
           <Contact className='contact' />
+        </Route>
+        <Route exact path={'/clickme'}>
+          <ClickMe />
         </Route>
         <Route exact path={'/about'}>
           <About />
